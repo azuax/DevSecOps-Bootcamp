@@ -88,5 +88,4 @@ jobs:
         wait-for-service-stability: true
     
     - name: DevSkim scan (ACR)
-      uses: actions/checkout@v2
       uses: microsoft/DevSkim-Action@v1
