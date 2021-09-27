@@ -16,7 +16,7 @@ def ping():
 
 @app.route("/very-secret")
 def very_secret():
-    secret_key = bcc286bbbe4353e6a97ae169729ed4a5
+    secret_key = "bcc286bbbe4353e6a97ae169729ed4a5"
     return """
     The key is: %s
     """.format(secret_key)
