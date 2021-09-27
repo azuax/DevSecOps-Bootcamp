@@ -88,7 +88,7 @@ jobs:
         wait-for-service-stability: true
 
   lint:
-    name: DevSkim
+    name: ACR & SIS
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -111,3 +111,27 @@ jobs:
         
       - name: Trufflehog scan (SIS)
         uses: edplato/trufflehog-actions-scan@master
+
+  sca:
+    name: Source Composition Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build project with Maven
+        run: mvn clean install
+      - name: OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
+        with:
+          project: 'test'
+          path: '.'
+          format: 'HTML'    
+          args: >
+            --failOnCVSS 7
+            --enableRetired
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
