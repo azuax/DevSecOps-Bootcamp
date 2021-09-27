@@ -89,3 +89,6 @@ jobs:
     
     - name: DevSkim scan (ACR)
       uses: microsoft/DevSkim-Action@v1
+      with:
+        output-filename: devskim-results.sarif
+        output-directory: acr/
