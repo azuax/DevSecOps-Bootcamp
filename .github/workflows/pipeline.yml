@@ -87,30 +87,30 @@ jobs:
         cluster: devsecops-bootcamp-cluster
         wait-for-service-stability: true
 
-  lint:
-    name: ACR & SIS
-    runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  # lint:
+  #   name: ACR & SIS
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     actions: read
+  #     contents: read
+  #     security-events: write
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      - name: Run DevSkim scanner
-        uses: microsoft/DevSkim-Action@v1
-        with:
-          output-filename: devskim-results.sarif
+  #     - name: Run DevSkim scanner
+  #       uses: microsoft/DevSkim-Action@v1
+  #       with:
+  #         output-filename: devskim-results.sarif
 
-      - name: Upload DevSkim scan results
-        uses: actions/upload-artifact@v2
-        with:
-          name: devskim-results
-          path: devskim-results.sarif
+  #     - name: Upload DevSkim scan results
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: devskim-results
+  #         path: devskim-results.sarif
         
-      - name: Trufflehog scan (SIS)
-        uses: edplato/trufflehog-actions-scan@master
+  #     - name: Trufflehog scan (SIS)
+  #       uses: edplato/trufflehog-actions-scan@master
 
   sca:
     name: Source Composition Analysis
