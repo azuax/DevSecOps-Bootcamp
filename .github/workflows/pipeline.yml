@@ -149,7 +149,10 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   dast:
-    name: ZAP Scan
-    uses: zaproxy/action-baseline@v0.5.0
-    with:
-      target: 'http://devsecops.go-hacking.com'
+    name: Dynamic App Security Testing
+    runs-on: ubuntu-latest
+    steps:
+    - name: ZAP Scan
+      uses: zaproxy/action-baseline@v0.5.0
+      with:
+        target: 'http://devsecops.go-hacking.com'
