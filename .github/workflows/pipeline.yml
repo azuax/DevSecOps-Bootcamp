@@ -56,7 +56,7 @@ jobs:
         repository: devsecops-bootcamp
         tag: ${{ steps.build-image.outputs.tag }}
         fail_threshold: medium
-        ignore-list: |
+        ignore_list: |
           CVE-2021-33574
           CVE-2021-37750
           CVE-2019-12904
