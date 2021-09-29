@@ -55,11 +55,8 @@ jobs:
       with:
         repository: devsecops-bootcamp
         tag: ${{ steps.build-image.outputs.tag }}
-        fail_threshold: medium
-        ignore_list: |
-          CVE-2021-33574
-          CVE-2021-37750
-          CVE-2019-12904
+        fail_threshold: critical
+
     # Access scan results in later steps
     - run: echo "${{ steps.docker-scan.outputs.total }} total vulnerabilities."
 
