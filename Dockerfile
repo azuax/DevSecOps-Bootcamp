@@ -1,5 +1,7 @@
 FROM python:3.8-slim
 
+RUN apt-get update && apt-get -y upgrade
+
 RUN useradd -r -s /bin/bash devsecops
 
 ENV HOME /app
