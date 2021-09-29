@@ -46,6 +46,16 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
+    - name: AWS ECR Scan Docker Image
+      id: docker-scan
+      uses: alexjurkiewicz/ecr-scan-image@v1.7.0
+      with:
+          repository: devsecops-bootcamp
+          tag: ${{ steps.docker-build.outputs.tag }}
+          fail_threshold: medium
+     # Access scan results in later steps
+    - run: echo "${{ steps.docker-scan.outputs.total }} total vulnerabilities."
+
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
