@@ -60,8 +60,8 @@ jobs:
           CVE-2021-33574
           CVE-2021-37750
           CVE-2019-12904
-     # Access scan results in later steps
-      run: echo "${{ steps.docker-scan.outputs.total }} total vulnerabilities."
+    # Access scan results in later steps
+    - run: echo "${{ steps.docker-scan.outputs.total }} total vulnerabilities."
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
