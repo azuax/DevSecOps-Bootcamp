@@ -56,8 +56,12 @@ jobs:
         repository: devsecops-bootcamp
         tag: ${{ steps.build-image.outputs.tag }}
         fail_threshold: medium
+        ignore-list: |
+          CVE-2021-33574
+          CVE-2021-37750
+          CVE-2019-12904
      # Access scan results in later steps
-    - run: echo "${{ steps.docker-scan.outputs.total }} total vulnerabilities."
+      run: echo "${{ steps.docker-scan.outputs.total }} total vulnerabilities."
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
