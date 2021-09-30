@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import pytest
+import os
 
 
 target_url = "http://devsecops.go-hacking.com/"
@@ -13,7 +14,7 @@ def get_driver():
     options = Options()
     options.add_argument("--headless")
 
-    driver = webdriver.Firefox(executable_path='geckodriver', options=options)
+    driver = webdriver.Firefox(executable_path=os.path.join(os.getcwd(), 'geckodriver'), options=options)
     yield
     driver.close()
 
