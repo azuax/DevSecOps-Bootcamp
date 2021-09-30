@@ -14,10 +14,10 @@ def get_driver():
     global driver
     options = Options()
     options.add_argument("--headless")
+    options.binary_location = '/usr/bin/firefox'
+    # binary = FirefoxBinary('/usr/bin/firefox')
 
-    binary = FirefoxBinary('/usr/bin/firefox')
-
-    driver = webdriver.Firefox(firefox_binary=binary, executable_path=os.path.join(os.getcwd(), 'geckodriver'), options=options)
+    driver = webdriver.Firefox(executable_path=os.path.join(os.getcwd(), 'geckodriver'), options=options)
     yield
     driver.close()
 
