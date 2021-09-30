@@ -78,7 +78,7 @@ jobs:
 
 
     - name: Install Firefox
-      run: apt-get update && apt-get install firefox
+      run: apt-get update && apt-get install -y firefox
 
     - name: Get Geckodriver
       uses: wei/wget@v1.1.1
