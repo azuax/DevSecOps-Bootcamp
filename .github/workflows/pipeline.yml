@@ -76,24 +76,6 @@ jobs:
         cluster: devsecops-bootcamp-cluster
         wait-for-service-stability: true
 
-
-    - name: Install Firefox
-      run: sudo apt-get update && sudo apt-get install -y firefox && which firefox
-
-    - name: Get Geckodriver
-      uses: wei/wget@v1.1.1
-      with:
-        args: -O gecko.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz
-
-    - name: Untar gecko driver
-      run: tar -xzvf gecko.tar.gz && export PATH=$PATH:$GITHUB_PATH/geckodriver
-
-    - name: Sanity Check with selenium
-      uses: fylein/python-pytest-github-action@v2
-      with:
-        args: pip3 install -r selenium-requirements.txt && pytest selenium-sanity.py
-
-
     - name: OWASP Dependency Check
       uses: dependency-check/Dependency-Check_Action@main
       id: Depcheck
