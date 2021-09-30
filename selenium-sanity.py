@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import pytest
 import os
 
@@ -14,7 +15,9 @@ def get_driver():
     options = Options()
     options.add_argument("--headless")
 
-    driver = webdriver.Firefox(executable_path=os.path.join(os.getcwd(), 'geckodriver'), options=options)
+    binary = FirefoxBinary('/usr/bin/firefox')
+
+    driver = webdriver.Firefox(firefox_binary=binary, executable_path=os.path.join(os.getcwd(), 'geckodriver'), options=options)
     yield
     driver.close()
 
