@@ -16,7 +16,7 @@ def get_driver():
 
     binary = FirefoxBinary('geckodriver')
 
-    driver = webdriver.Firefox(options=options)
+    driver = webdriver.Firefox(firefox_binary=binary, options=options)
     yield
     driver.close()
 
