@@ -10,7 +10,7 @@ api_key = get_secret()
 
 @app.route("/")
 def hello():
-    return "Hello, World!"
+    return '<h1 id="title">Hello, World!</h1>'
 
 @app.route("/ping")
 def ping():
